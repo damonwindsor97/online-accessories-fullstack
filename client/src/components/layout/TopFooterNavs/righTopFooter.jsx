@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
+import * as styles from '../TopFooter.css'
 
 function righTopFooter() {
   return (
     <div>
         <h4>Partnered Links</h4>
-        <ul>
+        <ul className={styles.NavStyling}>
             <Link>
                 <li>
                     Provide API

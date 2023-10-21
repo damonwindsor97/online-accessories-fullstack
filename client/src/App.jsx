@@ -8,6 +8,11 @@ import NotFound from './pages/NotFound';
 import AboutPage from './pages/AboutPage';
 import SupportPage from './pages/SupportPage';
 
+// AUTH PAGES
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+import Dashboard from './pages/auth/Dashboard';
+
 // Import components
 import Layout from './components/layout/Layout';
 
@@ -17,9 +22,16 @@ function App() {
       {/* MAIN LAYOUT WRAPPER & ROUTED CHILDREN */}
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        {/* AUTH PAGES */}
+        <Route path='register' element={<Register/>} />
+        <Route path='login' element={<Login/>} />
+        <Route path='dashboard' element={<Dashboard/>} />
+
+        {/* OTHER PAGES */}
         <Route path='store/products' element={<ProductsPage />} />
         <Route path='about' element={<AboutPage />} />
         <Route path='support' element={<SupportPage />} />
+
 
         {/* ERROR PAGES */}
         <Route path="*" element={<NotFound />} />

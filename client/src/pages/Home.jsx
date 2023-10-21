@@ -1,6 +1,12 @@
 import { Fragment } from 'react';
+
+// Component Imports
 import Container from 'react-bootstrap/Container';
+
 import OaBox from '../components/common/OaBox';
+import PromotionWindow from '../components/features/PromotionWindow';
+import ProductSelect from '../components/features/ProductSelect';
+
 
 const Home = () => {
   return (
@@ -12,6 +18,13 @@ const Home = () => {
           link="Shop Now"
           linkTo="/store/products"
         />
+        
+        <PromotionWindow
+          text="SALE ON 40 SERIES GRAPHICS CARDS"
+        />
+
+        <ProductSelect/>
+
       </Container>
     </Fragment>
   )

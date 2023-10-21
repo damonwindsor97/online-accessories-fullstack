@@ -1,7 +1,7 @@
 import * as styles from './OaBox.css'
 import { Link } from 'react-router-dom'
 
-const TuBox = ({ title, content, link, linkTo }) => {
+const OaBox = ({ title, content, link, linkTo,  }) => {
   return (
     <div className={styles.boxSetting}>
       <h1 className={styles.boxTitle}>{title}</h1>
@@ -14,4 +14,4 @@ const TuBox = ({ title, content, link, linkTo }) => {
   )
 }
 
-export default TuBox
+export default OaBox

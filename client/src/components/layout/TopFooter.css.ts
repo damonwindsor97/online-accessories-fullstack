@@ -3,7 +3,7 @@ import { vars } from '../../styles/themes.css';
 
 export const TopFooter = style({
     color: vars.colors.complementary,
-    backgroundColor: vars.colors.brandLight,
+    backgroundColor: vars.colors.grey200,
     padding: vars.space["3x"],
     borderTop: `1px solid ${vars.colors.grey300}`,
     textAlign: "center"
@@ -20,3 +20,6 @@ export const TopFooterNav = style({
     width: "33.33%"
 })
 
+export const NavStyling = style({
+    listStyleType: "none",
+})

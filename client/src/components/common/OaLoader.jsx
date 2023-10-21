@@ -1,7 +1,7 @@
 import * as styles from './OaLoader.css'
 import Spinner from 'react-bootstrap/Spinner'
 
-function TuLoader() {
+function OaLoader() {
   return (
     <div className={styles.loadingBox}>
       <Spinner 
@@ -12,4 +12,4 @@ function TuLoader() {
   )
 }
 
-export default TuLoader
+export default OaLoader

@@ -1,8 +1,8 @@
-
+import { Link } from "react-router-dom"
 
 const OaButton = ({content, linkTo, icon}) => {
   return (
-    <button className='OaButton' to={linkTo}>{content} {icon}</button>
+    <Link to={linkTo}><button className='OaButton'>{content} {icon}</button></Link>
   )
 }
 

@@ -30,8 +30,9 @@ const Header = () => {
           </Nav>
           {/* AUTH NAVLINKS */}
           <Nav>
-            <OaButton content="Login" linkTo="/login" icon={<RiLoginCircleFill/>}/>
-            <OaButton content="Sign-up" linkTo="/signup" icon={<BsPersonFillAdd/>}/>
+            <Nav.Link className={styles.navLink} as={Link} to='/register'>register</Nav.Link>
+            <Nav.Link className={styles.navLink} as={Link} to='/login'>Login</Nav.Link>
+            <Nav.Link className={styles.navLink} as={Link} to='/dashboard'>Dashboard</Nav.Link>
             <OaButton content="Cart" linkTo="/cart" icon={<BsFillCartPlusFill/>}/>
           </Nav>
         </Navbar.Collapse>

@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 require('dotenv').config();
 
+const { dbPing } = require('./config/db')
 const config = require('./config/config')
 const routes = require('./routes/routes')
 const ApiError = require('./utils/ApiError')
@@ -15,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
-debugStartup("parsing middleware")
+debugStartup("parsing middleware on all routes")
 
 // Routes
 app.use('/api', routes())
@@ -29,7 +30,9 @@ app.use((req, res, next) => {
 app.use(apiErrorHandler);
 
 
-const PORT = config.port;
-app.listen(
-    PORT, () => console.log(`Server is running on port: ${PORT}`)
-);
+dbPing.then(() => {
+    const PORT = config.port;
+    app.listen(
+        PORT, () => console.log(`Server is running on port: ${PORT}`)
+    );
+})

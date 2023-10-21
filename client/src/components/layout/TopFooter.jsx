@@ -8,7 +8,7 @@ import RighTopFooter from './TopFooterNavs/righTopFooter'
 
 function TopFooter() {
   return (
-    <div className={[styles.TopFooter]}>
+    <div className={styles.TopFooter}>
         <div className={styles.TopFooterContent}>
             <div className={styles.TopFooterNav}>
                 <LeftTopFooter/>

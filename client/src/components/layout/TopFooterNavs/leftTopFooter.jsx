@@ -1,10 +1,10 @@
-
+import * as styles from '../TopFooter.css'
 
 function leftTopFooter() {
   return (
     <div>
         <h4>Quick Links</h4>
-        <ul>
+        <ul className={styles.NavStyling}>
             <li>
                 Home
             </li>
