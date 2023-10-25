@@ -11,8 +11,8 @@ export const root = createGlobalTheme(":root", {
     primary: twColors.white,
     complementary: twColors.black,
     brand: twColors.purple[300],
-    brandLight: twColors.purple[100],
-    brandDark: twColors.purple[400],
+    brandLight: twColors.purple[200],
+    brandDark: twColors.purple[500],
 
     // Color tokens
     success: twColors.green[400],

@@ -4,12 +4,12 @@ import logoImg from '../../assets/images/oa-logo.png'
 import { Link } from 'react-router-dom';
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { BsFillCartPlusFill } from 'react-icons/bs';
-import { RiLoginCircleFill } from 'react-icons/ri';
-import { BsPersonFillAdd } from 'react-icons/bs';
 
 import OaButton from '../common/OaButton';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Header = () => {
+  const { user, logout } = useAuth()
   return (
     <Navbar className={styles.navbar} variant="light" expand="lg" sticky="top">
       <Container>
@@ -25,15 +25,17 @@ const Header = () => {
           {/* STANDARD NAVLINKS */}
           <Nav className='me-auto'>
             <Nav.Link className={styles.navLink} as={Link} to='/store/products'>Products</Nav.Link>
-            <Nav.Link className={styles.navLink} as={Link} to='/about'>About</Nav.Link>
             <Nav.Link className={styles.navLink} as={Link} to='/support'>Support</Nav.Link>
           </Nav>
           {/* AUTH NAVLINKS */}
           <Nav>
-            <Nav.Link className={styles.navLink} as={Link} to='/register'>register</Nav.Link>
-            <Nav.Link className={styles.navLink} as={Link} to='/login'>Login</Nav.Link>
-            <Nav.Link className={styles.navLink} as={Link} to='/dashboard'>Dashboard</Nav.Link>
-            <OaButton content="Cart" linkTo="/cart" icon={<BsFillCartPlusFill/>}/>
+            {/* Show if user is NOT logged in */}
+            {!user && <Nav.Link className={styles.navLink} as={Link} to='/register'>register</Nav.Link>}
+            {!user && <Nav.Link className={styles.navLink} as={Link} to='/login'>Login</Nav.Link>}
+            {/* Show if user IS logged in */}
+            {user && <Nav.Link className={styles.navLink} as={Link} to='/dashboard'>Dashboard</Nav.Link>}
+            {user && <button onClick={() => logout()}>Logout</button>}
+            {user && <OaButton content="Cart" icon={<BsFillCartPlusFill/>}/>}
           </Nav>
         </Navbar.Collapse>
       </Container>

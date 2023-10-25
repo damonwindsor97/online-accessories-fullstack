@@ -1,13 +1,14 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '../../styles/themes.css';
 
+
 export const boxSetting = style({
   color: vars.colors.complementary,
   backgroundColor: vars.colors.primary,
   textAlign: "center",
   margin: vars.space['1x'],
   padding: vars.space['4x'],
-  backgroundImage: `url(../../assets/images/Rev.png)`,
+  backgroundImage: 'url("../../assets/images/Rev.png")',
   
 })
 

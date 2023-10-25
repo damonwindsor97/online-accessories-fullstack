@@ -15,6 +15,7 @@ import Dashboard from './pages/auth/Dashboard';
 
 // Import components
 import Layout from './components/layout/Layout';
+import AuthPrivateRoutes from './components/layout/AuthPrivateRoutes';
 
 function App() {
   return (
@@ -25,7 +26,11 @@ function App() {
         {/* AUTH PAGES */}
         <Route path='register' element={<Register/>} />
         <Route path='login' element={<Login/>} />
-        <Route path='dashboard' element={<Dashboard/>} />
+
+        {/* Private Auth Routes */}
+        <Route element={<AuthPrivateRoutes/>}>
+          <Route path='dashboard' element={<Dashboard/>} />
+        </Route>
 
         {/* OTHER PAGES */}
         <Route path='store/products' element={<ProductsPage />} />

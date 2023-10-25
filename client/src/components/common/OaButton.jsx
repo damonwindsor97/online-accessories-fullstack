@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
+import * as styles from './OaButton.css'
 
-const OaButton = ({content, linkTo, icon}) => {
+const OaButton = ({content, icon}) => {
   return (
-    <Link to={linkTo}><button className='OaButton'>{content} {icon}</button></Link>
+    <Link><button className={styles.OaButton}>{content} {icon}</button></Link>
   )
 }
 

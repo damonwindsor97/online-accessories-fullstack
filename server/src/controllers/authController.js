@@ -54,7 +54,6 @@ module.exports = {
 
       // Return the user object + token
       res.send({
-        user: userJSON,
         token: jwtSignUser(userJSON)
       });
 
@@ -70,6 +69,7 @@ module.exports = {
       // Looking for email match = existing user = good!
       const userMatch = await findUser(email);
       if(userMatch.length === 0){
+        // REMOVE DEBUG STRINGS BEFORE PROD
         return next(ApiError.badRequest('The credentials entered are not correct (DEBUG: email)'));
       }
 
@@ -85,7 +85,6 @@ module.exports = {
 
       // Return the user object + token
       res.send({
-        user: userJSON,
         token: jwtSignUser(userJSON)
       });
 

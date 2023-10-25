@@ -19,7 +19,8 @@ globalStyle("html:focus-within", {
 globalStyle("body", {
   minHeight: "100vh",
   textRendering: "optimizeSpeed",
-  lineHeight: 1.5
+  lineHeight: 1.5,
+
   // ...
 });
 

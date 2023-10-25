@@ -8,7 +8,6 @@ export const PromotionDiv = style({
 })
 
 export const PromotionWindow = style({
-    width: "60vw",
     border: "solid black",
     margin: "0 auto",
     
