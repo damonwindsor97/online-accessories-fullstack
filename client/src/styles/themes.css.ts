@@ -4,15 +4,15 @@ import twColors from 'tailwindcss/colors';
 export const root = createGlobalTheme(":root", {
   fonts: {
     brand: "Montserrat, apple-system, sans-serif",
-    body: "Open Sans, apple-system, sans-serif",
+    body: "Karla, apple-system, sans-serif",
   },
   colors: {
     // Semantic tokens
     primary: twColors.white,
     complementary: twColors.black,
-    brand: twColors.purple[300],
+    brand: twColors.purple[400],
     brandLight: twColors.purple[200],
-    brandDark: twColors.purple[500],
+    brandDark: twColors.purple[600],
 
     // Color tokens
     success: twColors.green[400],

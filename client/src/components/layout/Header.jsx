@@ -2,11 +2,11 @@ import * as styles from './Header.css';
 import logoImg from '../../assets/images/oa-logo.png'
 
 import { Link } from 'react-router-dom';
-import { Container, Navbar, Nav } from "react-bootstrap";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import { BsFillCartPlusFill } from 'react-icons/bs';
 
 import OaButton from '../common/OaButton';
-import { useAuth } from '../../contexts/AuthContext';
+import useAuth from '../../hooks/useAuth';
 
 const Header = () => {
   const { user, logout } = useAuth()
@@ -34,8 +34,8 @@ const Header = () => {
             {!user && <Nav.Link className={styles.navLink} as={Link} to='/login'>Login</Nav.Link>}
             {/* Show if user IS logged in */}
             {user && <Nav.Link className={styles.navLink} as={Link} to='/dashboard'>Dashboard</Nav.Link>}
-            {user && <button onClick={() => logout()}>Logout</button>}
-            {user && <OaButton content="Cart" icon={<BsFillCartPlusFill/>}/>}
+            {user && <Button variant="danger" onClick={() => logout()}>Logout</Button>}
+            {user && <Button variant="info"><BsFillCartPlusFill/></Button>}
           </Nav>
         </Navbar.Collapse>
       </Container>

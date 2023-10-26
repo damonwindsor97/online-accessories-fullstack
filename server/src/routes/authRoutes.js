@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router()
  
+const authPolicy = require('../policies/authPolicy')
 const authController = require('../controllers/authController')
 
 
@@ -9,11 +10,11 @@ module.exports = () => {
     router.get('/users', authController.listUsers );
 
     // AUTH REGISTER
-    router.post('/register', authController.register );
+    router.post('/register', authPolicy.validateAuth, authController.register );
 
-    router.post('/login', authController.login )
+    // AUTH LOGIN /api/auth/login
+    router.post('/login', authPolicy.validateAuth, authController.login )
 
-    // AUTH LOGIN
 
     return router
 }

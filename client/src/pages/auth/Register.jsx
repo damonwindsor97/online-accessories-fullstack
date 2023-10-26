@@ -1,13 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import {Button, Form} from 'react-bootstrap';
-import axios from 'axios';
+import authService from '../../services/authServices';
 import { toast } from 'react-toastify'
 
 
 import * as styles from './Register.css';
 import OaCard from '../../components/common/OaCard';
-import { useAuth } from '../../contexts/AuthContext';
+import useAuth from '../../hooks/useAuth';
 
 function Register() {
   const loginSaveUser = useAuth();
@@ -47,14 +47,12 @@ function Register() {
 
     // API Call
     try {
-      const response = await axios.post("/api/auth/register", user
-      );
+      const response = await authService.register(user);
       // Automatically login user when they sign up
       loginSaveUser(response.data);
       navigate('/dashboard')
     } catch (error) {
       console.log(error?.response);
-      toast.error(error.response.data);
       setTimeout(() => {setLoading(false)}, 1000)
     }
   }

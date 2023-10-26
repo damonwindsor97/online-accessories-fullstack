@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
+import { setHeaderToken } from '../services/api';
 
 const AuthContext = createContext();
 
@@ -23,6 +24,7 @@ export function AuthProvider({ children }){
         const { token } = data;
         localStorage.setItem("userToken", JSON.stringify(token));
         setUser(jwtDecode(token));
+        setHeaderToken();
     }
 
     // Retrieve the user from localStorage
@@ -42,7 +44,8 @@ export function AuthProvider({ children }){
     const logout = () => {
         localStorage.removeItem("userToken");
         setUser(null);
-        navigate('/login')
+        navigate('/login');
+        setHeaderToken();
     }
 
     const value = {
@@ -57,3 +60,4 @@ export function AuthProvider({ children }){
         </AuthContext.Provider>
     )
 }
+export default AuthContext

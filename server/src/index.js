@@ -1,9 +1,12 @@
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors')
+const helmet = require('helmet')
 require('dotenv').config();
 
 const { dbPing } = require('./config/db')
 const config = require('./config/config')
+const corsOptions = require('./config/corsOptions')
 const routes = require('./routes/routes')
 const ApiError = require('./utils/ApiError')
 const apiErrorHandler = require('./middleware/apiErrorHandler')
@@ -13,9 +16,15 @@ const debugStartup = require('debug')('app:startup')
 
 const app = express();
 
+// HTTP Header Setter Security
+app.use(cors({ origin: '*' }))
+app.use(helmet())
+// app.use(cors(corsOptions)) // Whitelisted
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
+
 debugStartup("parsing middleware on all routes")
 
 // Routes
