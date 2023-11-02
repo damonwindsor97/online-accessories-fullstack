@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 // Import pages 
 import Home from './pages/Home';
-import ProductsPage from './pages/product/ProductsPage';
+import ProductsMenu from './pages/product/ProductsMenu';
 import NotFound from './pages/NotFound';
 import AboutPage from './pages/AboutPage';
 import SupportPage from './pages/SupportPage';
@@ -32,11 +32,15 @@ function App() {
           <Route path='dashboard' element={<Dashboard/>} />
         </Route>
 
+        {/* PRODUCTS ROUTES */}
+        <Route path="store">
+          <Route path='products' element={<ProductsMenu />} />
+
+        </Route>
+
         {/* OTHER PAGES */}
-        <Route path='store/products' element={<ProductsPage />} />
         <Route path='about' element={<AboutPage />} />
         <Route path='support' element={<SupportPage />} />
-
 
         {/* ERROR PAGES */}
         <Route path="*" element={<NotFound />} />

@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 
 import OaBox from '../components/common/OaBox';
 import PromotionWindow from '../components/features/PromotionWindow';
-import ProductSelect from '../components/features/ProductSelect';
+import ProductSelect from '../components/features/Selection';
 
 
 const Home = () => {

@@ -1,21 +1,25 @@
 import * as styles from './ProductsList.css'
-import { Button } from "react-bootstrap";
 import ProductItem from "./ProductItem"
+import { priceFormatter } from '../../../services/readUtils'
 
-function ProductsList(props) {
-  const { products, onAddProduct, onRemoveProduct } = props;
+function ProductsList({products}) {
+
   return (
-    <div>
-      <div className={styles.btnBox}>
-        <Button onClick={() => onAddProduct("NEW!")} variant="info" type="button">Add to Cart</Button>
-      </div>
-      <div className={styles.listGrid}>
+    <div className={styles.gridContainer}>
+      <div className={styles.productGrid}>
         {products.length === 0 && <p>Empty cart...</p>}
         {products.length > 0 && products.map(product => 
           <ProductItem 
             key={product.id}
-            product={product}
-            onRemoveProduct={onRemoveProduct} 
+            id={product.id}
+            productName={product.productName}
+            description={product.description}
+            price={priceFormatter(product.price)}
+            category={product.category}
+            manufacturer={product.manufacturer}
+            image={product.image}
+            onSale={product.onSale}
+            isAvailable={product.isAvailable}
           />
         )}
       </div>

@@ -6,7 +6,7 @@ export const LinkBoxTitle = style({
     color: 'white',
     top: '5px',
     left: '10px',
-    visibility: 'hidden'
+
 })
 
 export const LinkBox = style({

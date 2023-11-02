@@ -23,6 +23,15 @@ class ApiError {
     return new ApiError(404, 'Resource Not Found');
   }
 
+  // [413] ENTITY TOO LATE
+  static tooLarge(msg){
+    return new ApiError(413, `Upload failed: ${msg}`);
+  }
+  // [422] ENTITY TOO LATE
+  static cannotProcess(msg){
+    return new ApiError(422, `Upload failed: ${msg}`);
+  }
+
   // [500] Internal Server Error
   // PARAMETERS: This takes two arguments - our custom message to the client + the error stack passed from the server/DB.  We will need this for debugging, so we console.log this out!
   static internal(msg, err) {

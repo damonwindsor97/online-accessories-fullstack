@@ -1,18 +1,19 @@
 import * as styles from './ProductItem.css'
-import { Button } from "react-bootstrap";
+import { Link } from 'react-router-dom'
+import Image from 'react-bootstrap/Image'
+
 
 function ProductItem(props) {
-  const { product, onRemoveProduct } = props;
   return (
-    <div className={styles.itemBox}>
-      <div>
-        <img src={product.image} alt={product.name} />
+    <Link className={styles.productLink} to="#">
+      <div className={styles.productCard}>
+        <Image src={props.image} alt={props.image} thumbnail/>
+        <div className={styles.productCardContent}>
+          <h2 className={styles.productCardTitle}>{props.productName}</h2>
+          <p>{props.price}</p>
+        </div>
       </div>
-      <div>
-        <h4>{product.name}</h4>
-        <Button onClick={() => onRemoveProduct(product.id)} variant="danger" type="button">Remove from Cart</Button>
-      </div>
-    </div>
+    </Link>
   )
 }
 

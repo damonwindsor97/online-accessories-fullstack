@@ -1,5 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
+const fileUpload = require('express-fileupload')
 const cors = require('cors')
 const helmet = require('helmet')
 require('dotenv').config();
@@ -24,6 +25,10 @@ app.use(helmet())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
+
+// File pasing middleware
+app.use(fileUpload({ createParentPath: true }))
+
 
 debugStartup("parsing middleware on all routes")
 

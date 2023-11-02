@@ -1,11 +1,11 @@
-import * as styles from './ProductSelect.css'
+import * as styles from './Selection.css'
 
 import Container from "react-bootstrap/Container"
 import OaLinkBox from "../common/OaLinkBox"
 import GPUs from '../../assets/images/GPUs.jpg'
 import Aimboss from '../../assets/images/aimboss.jpg'
 
-function ProductSelect() {
+function Selection() {
   return (
     <Container>
 
@@ -31,4 +31,4 @@ function ProductSelect() {
   )
 }
 
-export default ProductSelect
+export default Selection
