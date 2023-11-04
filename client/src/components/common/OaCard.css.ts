@@ -18,7 +18,7 @@ export const generalForm = style({
   })
   
   export const leadCard = style({
-    background: vars.colors.primary,
+    background:  "linear-gradient( #e9d5ff, #d8b4fe)",
     color: vars.colors.complementary,
     margin: "auto",
     padding: "2rem",
@@ -28,8 +28,10 @@ export const generalForm = style({
   })
   
   export const cardTitle = style({
-    color: vars.colors.brand,
+    color: vars.colors.complementary,
     paddingBottom: "1rem",
+    fontFamily: vars.fonts.brand,
     fontSize: "2em",
-    fontWeight: vars.fontWeights.bold
+    fontWeight: vars.fontWeights.bolder,
+    textTransform: "uppercase",
   })

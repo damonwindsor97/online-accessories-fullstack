@@ -1,10 +1,24 @@
-import { Link } from "react-router-dom"
+import PropTypes from 'prop-types'
 import * as styles from './OaButton.css'
+import { Button } from 'react-bootstrap'
 
-const OaButton = ({content, icon}) => {
+const OaButton = ({ children, loadingState, onClick }) => {
   return (
-    <Link><button className={styles.OaButton}>{content} {icon}</button></Link>
+    <Button 
+      className={styles.button}
+      type={onClick ? "button" : "submit"} 
+      onClick={onClick}
+      disabled={loadingState ? 1 : 0}
+    >
+      {children}
+    </Button>
   )
+}
+
+OaButton.propTypes = {
+  children: PropTypes.any,
+  loadingState: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 export default OaButton

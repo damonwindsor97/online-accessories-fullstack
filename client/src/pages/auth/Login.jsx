@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import {Button, Form} from 'react-bootstrap';
+import {Button, Form, Spinner} from 'react-bootstrap';
 import axios from 'axios';
 import { toast } from 'react-toastify'
 
@@ -71,8 +71,16 @@ function Login() {
 
     <div className="d-grid gap-2">
       {/* BUTTON SUBMIT */}
-      <Button variant="primary" type="submit">
-        {loading ? "..." : "Submit"}
+      <Button 
+        variant="primary" 
+        type="submit">
+        {loading ? <Spinner
+          as="spin"
+          animation='border'
+          size='sm'
+          role='status'
+          aria-hidden="true"
+        /> : "Submit"}
       </Button>
     </div>
 

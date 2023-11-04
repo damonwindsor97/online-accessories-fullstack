@@ -7,6 +7,7 @@ import ProductsMenu from './pages/product/ProductsMenu';
 import NotFound from './pages/NotFound';
 import AboutPage from './pages/AboutPage';
 import SupportPage from './pages/SupportPage';
+import AddProduct from './pages/product/AddProduct';
 
 // AUTH PAGES
 import Login from './pages/auth/Login';
@@ -35,6 +36,7 @@ function App() {
         {/* PRODUCTS ROUTES */}
         <Route path="store">
           <Route path='products' element={<ProductsMenu />} />
+          <Route path="product/add" element={<AddProduct/>}/>
 
         </Route>
 
