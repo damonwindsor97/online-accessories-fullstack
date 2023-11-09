@@ -28,22 +28,25 @@ function AddProduct() {
     setProductData({ ...productData, [name]: value });
   }
   
+  // [2] handleFileChange will handle change in state for FILE data
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setProductData({ ...productData, image: file });
-  }
+  }  
 
+  // [3] handleSubmit will control form submission event
   const handleSubmit = async (e) => {
     e.preventDefault();      
     setLoading(true);
     try {
+      console.log('test', import.meta.env.VITE_API_URL)
       // API Post (refactored)
       const response = await productService.post(productData);
       console.log(response);
       navigate('/store/products');
 
     } catch (err) {
-      console.log(err?.response);
+      console.log(err);
       window.scroll({top: 0, left: 0, behavior: 'smooth' });
       setTimeout(() => {setLoading(false)}, 1000);
     }
@@ -100,7 +103,8 @@ function AddProduct() {
                 <Form.Control 
                 type="number" 
                 aria-describedby="price-dollar" 
-                id="price-input" name="price"  
+                id="price-input" 
+                name="price"  
                 value={price} 
                 placeholder="0" 
                 onChange={handleTextChange}
@@ -135,10 +139,12 @@ function AddProduct() {
                 value={onSale}
                 onChange={ handleTextChange }
               >
+                <option>Select Sale Status</option>
                 <option value={false}>Standard</option>
                 <option value={true}>On Sale</option>
               </Form.Control>
             </Col>
+            
             {/* AVAILABLE STATUS */}
             <Col lg={6} md={6} sm={12}>
               <Form.Label>Product availability</Form.Label>
@@ -148,6 +154,7 @@ function AddProduct() {
                 value={isAvailable}
                 onChange={ handleTextChange }
               >
+                <option>Select Availability</option>
                 <option value={true}>In Stock</option>
                 <option value={false}>Out of Stock</option>
               </Form.Control>

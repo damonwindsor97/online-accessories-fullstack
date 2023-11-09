@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import useAuth from '../../hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 import Container from "react-bootstrap/Container";
 
 import ProductsList from "../../components/features/products/ProductsList"
 import OaLoader from '../../components/common/OaLoader'
 import OaBox from '../../components/common/OaBox'
+import OaButton from '../../components/common/OaButton';
 
 function ProductsMenu() {
   // PRODUCTS STATE
@@ -14,6 +17,7 @@ function ProductsMenu() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
+  const { user } = useAuth();
   const effectRan = useRef(false);
   
   useEffect(() => {
@@ -91,6 +95,7 @@ function ProductsMenu() {
         content="Free Shipping with all orders"
       />
       <h1 className='mt-5'>Hardware Selection</h1>
+      {user && <Link to='/store/product/add'><OaButton >Create Listing</OaButton></Link>}
       <ProductsList products={data}/>
     </Container>
   )

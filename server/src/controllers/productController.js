@@ -9,7 +9,7 @@ module.exports = {
     async getAllProducts(req, res, next){
         try {
             const productRef = db.collection('products')
-            const snapshot = await productRef.where("isAvailable", "==", "true").orderBy("name", "asc").limit(10).get();
+            const snapshot = await productRef.orderBy("name", "asc").limit(10).get();
 
             // 400 ERROR HANDLING - check if the document exists
             if (snapshot.empty){
@@ -38,6 +38,7 @@ module.exports = {
         }
     },
 
+    // POST 
     async postProduct(req, res, next){
         debugWRITE(req.body);
         debugWRITE(req.files);
@@ -50,7 +51,7 @@ module.exports = {
             downloadURL= await storageBucketUpload(filename);
 
         } catch (error) {
-            return next(ApiError.internal("An error occured in uploading image to storage", error))
+            return next(ApiError.internal("An error occured in uploading image", error))
         }
 
 
@@ -74,6 +75,24 @@ module.exports = {
             return next(ApiError.internal("Your request could not be fulfilled", error))
         }
 
+    },
+
+    async getProductById(req, res, next){
+        debugREAD(req.params.id);
+        try {
+            // Get this doc within the products collection, store in productRef
+            const productRef = db.collection('products').doc(req.params.id);
+            const doc = await productRef.get();
+            
+            if(!doc.exists){
+                return next(ApiError.badRequest('Product you are looking for does not exist'))
+            } else {
+                res.send(doc.data());
+            }
+
+        } catch (error) {
+            return next(ApiError.internal("Your request couldn't be saved", error))
+        }
     }
 
 

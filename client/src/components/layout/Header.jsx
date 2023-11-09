@@ -1,17 +1,25 @@
 import * as styles from './Header.css';
 import logoImg from '../../assets/images/oa-logo.png'
+import {BsFillPersonVcardFill} from 'react-icons/Bs'
+import {IoLogOut} from 'react-icons/io5'
+import { useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import { Container, Navbar, Nav, Button } from "react-bootstrap";
-import { BsFillCartPlusFill } from 'react-icons/bs';
+import { Container, Navbar, Nav,  } from "react-bootstrap";
+import { BsFillCartPlusFill } from 'react-icons/Bs';
 
 import OaButton from '../common/OaButton';
 import useAuth from '../../hooks/useAuth';
 
+
+
 const Header = () => {
   const { user, logout } = useAuth()
+
+
   return (
-    <Navbar className={styles.navbar} variant="light" expand="lg" sticky="top">
+    <Navbar className={styles.navbar} 
+      variant="light" expand="lg" sticky="top">
       <Container>
         <Navbar.Brand className={styles.brandLink} as={Link} to='/'>
           <img className={styles.logo} src={logoImg} alt="timbertop united logo" />
@@ -33,9 +41,9 @@ const Header = () => {
             {!user && <Nav.Link className={styles.navLink} as={Link} to='/register'>register</Nav.Link>}
             {!user && <Nav.Link className={styles.navLink} as={Link} to='/login'>Login</Nav.Link>}
             {/* Show if user IS logged in */}
-            {user && <Nav.Link className={styles.navLink} as={Link} to='/dashboard'>Dashboard</Nav.Link>}
-            {user && <Button variant="danger" onClick={() => logout()}>Logout</Button>}
-            {user && <Button variant="info"><BsFillCartPlusFill/></Button>}
+            {user && <Nav.Link className={styles.navLink} as={Link} to='/dashboard'>{user.username} <BsFillPersonVcardFill size="2em"/></Nav.Link>}
+            {user && <Nav.Link className={styles.navLink} onClick={() => logout()}><IoLogOut size="2em" /></Nav.Link>}
+            {user && <Nav.Link className={styles.navLink}><BsFillCartPlusFill  size="2em"/></Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Container>

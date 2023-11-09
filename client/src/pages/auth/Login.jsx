@@ -7,6 +7,8 @@ import { toast } from 'react-toastify'
 
 import * as styles from './Login.css';
 import OaCard from '../../components/common/OaCard';
+import OaButton from '../../components/common/OaButton';
+
 import { useAuth } from '../../contexts/AuthContext'
 
 function Login() {
@@ -71,17 +73,16 @@ function Login() {
 
     <div className="d-grid gap-2">
       {/* BUTTON SUBMIT */}
-      <Button 
-        variant="primary" 
+      <OaButton 
         type="submit">
         {loading ? <Spinner
-          as="spin"
+          as="span"
           animation='border'
           size='sm'
           role='status'
           aria-hidden="true"
         /> : "Submit"}
-      </Button>
+      </OaButton>
     </div>
 
   </Form>        

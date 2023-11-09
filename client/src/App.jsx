@@ -8,6 +8,7 @@ import NotFound from './pages/NotFound';
 import AboutPage from './pages/AboutPage';
 import SupportPage from './pages/SupportPage';
 import AddProduct from './pages/product/AddProduct';
+import ProductDetails from './pages/product/ProductDetails';
 
 // AUTH PAGES
 import Login from './pages/auth/Login';
@@ -18,7 +19,7 @@ import Dashboard from './pages/auth/Dashboard';
 import Layout from './components/layout/Layout';
 import AuthPrivateRoutes from './components/layout/AuthPrivateRoutes';
 
-function App() {
+function App(params) {
   return (
     <Routes>
       {/* MAIN LAYOUT WRAPPER & ROUTED CHILDREN */}
@@ -37,6 +38,7 @@ function App() {
         <Route path="store">
           <Route path='products' element={<ProductsMenu />} />
           <Route path="product/add" element={<AddProduct/>}/>
+          <Route path="product/:id" element={<ProductDetails/>} />
 
         </Route>
 

@@ -2,23 +2,19 @@ import api from '../services/api'
 
 
 function getAll(){
-    return api.get('/api/products')
+    return api.get('products')
 
 }
-
 
 // POST - AddProduct
 function post(data){
     const formData = prepareFormData(data)
     return api.post(
-      '/api/products',
+      'products',
       formData,
       formConfig
     )
 }
-
-
-
 
 // Product Service "write" functions
 // Set content header to multipart form
@@ -30,7 +26,7 @@ const formConfig = {
 
 // Formart the mixed data that the form state provides
 function prepareFormData(data, uploadedfile){
-    let formData = new formData();
+    let formData = new FormData();
 
       // Append reconfigured mixed data to new object
   formData.append('name', data.name);

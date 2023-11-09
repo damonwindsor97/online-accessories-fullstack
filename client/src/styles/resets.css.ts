@@ -1,4 +1,6 @@
-import { globalStyle } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css';
+import { vars } from './themes.css';
+
 
 // Box-sizing rules
 globalStyle("*, *::before, *::after", {
@@ -15,14 +17,15 @@ globalStyle("html:focus-within", {
   scrollBehavior: "smooth"
 })
 
+
 // Set core body defaults
-globalStyle("body", {
+globalStyle('body', {
   minHeight: "100vh",
   textRendering: "optimizeSpeed",
   lineHeight: 1.5,
-
   // ...
 });
+
 
 // Set core anchor settings
 globalStyle("a", {

@@ -6,6 +6,11 @@ export const root = createGlobalTheme(":root", {
     brand: "Montserrat, apple-system, sans-serif",
     body: "Karla, apple-system, sans-serif",
   },
+
+  gradients: {
+    mainGradient: "linear-gradient( #e9d5ff, #d8b4fe)",
+    secondaryGradient: "linear-gradient(180deg, rgba(253,244,255,1) 35%, rgba(243,232,255,1) 100%)",
+  },
   colors: {
     // Semantic tokens
     primary: twColors.white,
@@ -13,6 +18,7 @@ export const root = createGlobalTheme(":root", {
     brand: twColors.purple[400],
     brandLight: twColors.purple[200],
     brandDark: twColors.purple[600],
+    transparent: "transparent",
 
     // Color tokens
     success: twColors.green[400],

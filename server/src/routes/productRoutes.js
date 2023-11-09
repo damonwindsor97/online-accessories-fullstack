@@ -18,12 +18,12 @@ module.exports = () => {
     [ProductPolicy.validateProduct, 
     FilePolicy.filePayloadExists, 
     FilePolicy.fileSizeLimiter, 
-    FilePolicy.fileExtLimiter('.png', '.jpg', '.jpeg', '.gif'), 
+    FilePolicy.fileExtLimiter(['.png', '.jpg', '.jpeg', '.gif']), 
     fileServerUpload], 
     ProductController.postProduct)
 
     // GET BY ID PRODUCT
-
+    router.get('/:id', ProductController.getProductById);
     // UPDATE BY ID PRODUCT
 
     // DELETE BY ID PRODUCT
