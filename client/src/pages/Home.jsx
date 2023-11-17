@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import OaBox from '../components/common/OaBox';
 import PromotionWindow from '../components/features/PromotionWindow';
 import ProductSelect from '../components/features/Selection';
+import SaleProducts from '../components/features/products/SaleProducts';
 
 
 const Home = () => {
@@ -13,15 +14,16 @@ const Home = () => {
     <Fragment>
       <Container>
         <OaBox 
-          title="Online Accessories"
-          content="Your electric one stop shop"
-          link="Shop Now"
+          link=""
           linkTo="/store/products"
+          
         />
-        
+
         <PromotionWindow
           text="SALE ON 40 SERIES GRAPHICS CARDS"
         />
+
+        <SaleProducts/>
 
         <ProductSelect/>
 

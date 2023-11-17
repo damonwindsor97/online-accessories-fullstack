@@ -8,6 +8,7 @@ import NotFound from './pages/NotFound';
 import AboutPage from './pages/AboutPage';
 import SupportPage from './pages/SupportPage';
 import AddProduct from './pages/product/AddProduct';
+import EditProduct from './pages/product/EditProduct';
 import ProductDetails from './pages/product/ProductDetails';
 
 // AUTH PAGES
@@ -37,8 +38,13 @@ function App(params) {
         {/* PRODUCTS ROUTES */}
         <Route path="store">
           <Route path='products' element={<ProductsMenu />} />
-          <Route path="product/add" element={<AddProduct/>}/>
-          <Route path="product/:id" element={<ProductDetails/>} />
+          <Route path="product">
+            <Route path=":id" element={<ProductDetails/>} />
+            <Route element={<AuthPrivateRoutes/>}>
+              <Route path="add" element={<AddProduct/>}/>
+              <Route path="edit/:id" element={<EditProduct/>}/>
+            </Route>
+          </Route>
 
         </Route>
 

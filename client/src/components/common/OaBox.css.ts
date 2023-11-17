@@ -8,7 +8,7 @@ export const boxSetting = style({
   textAlign: "center",
   margin: vars.space['1x'],
   padding: vars.space['4x'],
-  backgroundImage: 'url("../../assets/images/Rev.png")',
+  height: "25em"
   
 })
 

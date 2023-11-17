@@ -6,7 +6,7 @@ function righTopFooter() {
     <div>
         <h4>Partnered Links</h4>
         <ul className={styles.NavStyling}>
-            <Link>
+            <Link  className={styles.navLink}>
                 <li>
                     Provide API
                 </li>

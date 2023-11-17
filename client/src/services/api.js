@@ -34,7 +34,7 @@ api.interceptors.response.use(null, (error) => {
 export function setHeaderToken(){
     const token = localStorage.getItem("userToken");
     if(token){
-        api.defaults.headers.common["Authorization"] = "Bearer" + token;
+        api.defaults.headers.common["Authorization"] = "Bearer " + token;
     } else {
      delete api.defaults.headers.common['Authorization'];   
     }

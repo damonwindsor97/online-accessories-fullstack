@@ -1,8 +1,151 @@
+import * as styles from './ProductDetails.css'
+
+import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { Container, Col, Row } from 'react-bootstrap'
+
+import { priceFormatter } from '../../services/readUtils'
+import useAuth from '../../hooks/useAuth'
+import productService from '../../services/productServices'
+
+
+import OaLoader from '../../components/common/OaLoader'
+import OaButton from '../../components/common/OaButton'
+import OaButtonSecondary from '../../components/common/OaButtonSecondary'
+import OaLink from '../../components/common/OaLink'
+import Spinner from 'react-bootstrap/Spinner'
 
 
 function ProductDetails() {
+  const { user } = useAuth();
+  const params = useParams();
+  const navigate = useNavigate();
+
+  const [productData, setProductData] = useState({
+    id: params.id,
+    name: "",
+    description: "",
+    category: "",
+    price: 0,
+    manufacturer: "",
+    onSale: false,
+    isAvailable: true,
+    image: ""
+  });
+
+  const [ loading, setLoading] = useState(true);
+  const [error, setError] = useState(false)
+
+  const { id, name, description, price, image, manufacturer} = productData
+
+  const effectRan = useRef(false);
+  useEffect(() => {
+    if(effectRan.current == false){
+      fetchProduct();
+      setLoading(false)
+
+      return () => {
+        effectRan.current = true
+      }
+    }
+  }, [id])
+
+  async function fetchProduct(){
+    try {
+      const response = await productService.getById(id);
+      const fetchedProduct = await response.data;
+      console.log(fetchedProduct)
+
+      setProductData(productOnMount => ({
+        ...productOnMount,
+        ...fetchedProduct
+      }))
+
+
+    } catch (error) {
+      console.log(error?.response);
+      setError(true)
+    }
+  }
+
+  //  DELETE FUNCTION
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      
+      const response = await productService.del(id)
+      console.log(response)
+      setLoading(false)
+      navigate('/store/products')
+    } catch (error) {
+      console.log(error?.response);
+      setError(true);
+      window.scroll({ top: 0, left: 0, behavior: 'smooth'})
+    }
+  }
+
+    // CONDITIONAL LOAD: ERROR
+    if (error) {
+      return (
+        <Container className='text-center mt-5'>
+          <p>Error loading page...</p>
+  
+        </Container>
+      )
+    }
+  
+    // CONDITIONAL LOAD: LLOADING
+    if (loading && effectRan.current === false) {
+      return (
+        <Container className='text-center mt-4'>
+          <OaLoader />
+        </Container>
+      )
+    }
+
   return (
-    <div>ProductDetails</div>
+    <Container>
+      <div className={styles.detailsCard}>
+{user && <div className={styles.adminPanel}>
+          <h5>Admin Panel</h5>
+          {/*-------- DELETE ITEM --------*/}
+          <OaButtonSecondary onClick={handleDelete} loadingState={loading}
+        >
+          {loading ? <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          /> : 'Delete'}
+        </OaButtonSecondary> 
+
+          {/*----- EDIT ITEM ---------*/}
+         <Link to={`/store/product/edit/${id}`}><OaButtonSecondary>edit</OaButtonSecondary></Link>
+        </div>}
+
+        <div className={styles.detailsCardContent}>
+          <Row>
+            <Col>
+              <div className={styles.detailsLeftBox}>
+                <img className='detailsImage' src={image} alt="product"/>
+              </div>
+            </Col>
+            <Col>
+              <div className='detailsRightBox'>
+                <h3 className={styles.detailsTitle}>{name}</h3>
+                <h5 className={styles.detailsManufacturer}>{manufacturer}</h5>
+                <p className={styles.detailsDescription}>{description}</p>
+                <p className={styles.detailsPrice}>{priceFormatter(price)}</p>
+                <OaButton>Buy Now</OaButton>
+                <OaButton>add to cart</OaButton>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
+    </Container>
   )
 }
 

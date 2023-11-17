@@ -1,25 +1,36 @@
 import * as styles from '../TopFooter.css'
+import { Link } from 'react-router-dom'
 
 function leftTopFooter() {
   return (
     <div>
         <h4>Quick Links</h4>
         <ul className={styles.NavStyling}>
-            <li>
-                Home
-            </li>
-            <li>
-                Products
-            </li>
-            <li>
-                Support
-            </li>
-            <li>
-                Sign-up
-            </li>
-            <li>
-                Login
-            </li>
+            <Link className={styles.navLink}>
+                <li>
+                    Home
+                </li>
+            </Link>
+            <Link  className={styles.navLink}>
+                <li>
+                    Products
+                </li>
+            </Link>
+            <Link  className={styles.navLink}>
+                <li>
+                    Support
+                </li>
+            </Link>
+            <Link  className={styles.navLink}>
+                <li>
+                    Sign-up
+                </li>
+            </Link>
+            <Link  className={styles.navLink}>
+                <li>
+                    Login
+                </li>
+            </Link>
         </ul>
     </div>
   )

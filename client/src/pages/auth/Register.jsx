@@ -7,10 +7,10 @@ import { toast } from 'react-toastify'
 
 import * as styles from './Register.css';
 import OaCard from '../../components/common/OaCard';
-import useAuth from '../../hooks/useAuth';
+import { useAuth } from '../../contexts/AuthContext';
 
 function Register() {
-  const loginSaveUser = useAuth();
+  const {loginSaveUser} = useAuth();
   const navigate = useNavigate();
   const passwordConfirmRef = useRef();
   const [user, setUser] = useState({
@@ -52,7 +52,7 @@ function Register() {
       loginSaveUser(response.data);
       navigate('/dashboard')
     } catch (error) {
-      console.log(error?.response);
+      console.log(error);
       setTimeout(() => {setLoading(false)}, 1000)
     }
   }
@@ -87,7 +87,7 @@ function Register() {
 
         <div className="d-grid gap-2">
           {/* BUTTON SUBMIT */}
-          <Button variant="primary" type="submit">
+          <Button onClick={handleSubmit} variant="primary" type="submit">
             {loading ? "..." : "Submit"}
           </Button>
         </div>

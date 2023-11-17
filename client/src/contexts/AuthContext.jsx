@@ -22,7 +22,7 @@ export function AuthProvider({ children }){
     // Register & Login
     const loginSaveUser = async (data) => {
         const { token } = data;
-        localStorage.setItem("userToken", JSON.stringify(token));
+        localStorage.setItem("userToken", token);
         setUser(jwtDecode(token));
         setHeaderToken();
     }

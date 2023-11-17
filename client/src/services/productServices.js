@@ -16,6 +16,30 @@ function post(data){
     )
 }
 
+// GET BY ID
+function getById(id){
+  return api.get('/products/' + id)
+}
+
+//  PUT / edit product
+function put(id, data, uploadedfile) {
+  try {
+    const formData = prepareFormData(data, uploadedfile);
+    return api.put(
+      '/products/' + id, 
+      formData, 
+      formConfig
+    );
+  } catch (error) {
+    console.log(error)
+  }
+
+}
+
+function del(id){
+  return api.delete('products/' + id)
+}
+
 // Product Service "write" functions
 // Set content header to multipart form
 const formConfig = {
@@ -46,7 +70,10 @@ function prepareFormData(data, uploadedfile){
 
 const productService = {
     getAll,
-    post
+    post,
+    getById,
+    put,
+    del
 }
 
 export default productService;

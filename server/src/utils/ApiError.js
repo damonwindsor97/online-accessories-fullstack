@@ -17,6 +17,16 @@ class ApiError {
     return new ApiError(400, `Bad Request: ${msg}`);
   }
 
+  // [401] Unauthorized
+  static denyAccess(msg){
+    return new ApiError(401, `Access Denied: ${msg}`)
+  }
+
+  // [403] Forbidden
+  static forbidden(msg){
+    return new ApiError(403, `Access Denied: ${msg}`)
+  }
+
   // [404] Not Found
   // PARAMETERS: Takes no arguments as it's a static error (only ever going to give one message!)
   static notFound() {

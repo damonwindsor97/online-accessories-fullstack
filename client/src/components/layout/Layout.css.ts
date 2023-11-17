@@ -3,7 +3,7 @@ import { vars } from '../../styles/themes.css';
 
 export const app = style({
   fontFamily: vars.fonts.body,
-  background: vars.gradients.secondaryGradient,
+  background: vars.colors.primary,
   display: "flex",
   flexDirection: "column",
   minHeight: "100vh",

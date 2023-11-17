@@ -5,7 +5,7 @@ function OaCard({title, authForm, children}) {
     <div className={styles.container}>   
         <div className={`${styles.leadCard} ${authForm ? styles.authForm : styles.generalForm}`}>
             <h2 className={styles.cardTitle}>{title}</h2>
-            <div>{children}</div>
+            <div className={styles.cardChildren}>{children}</div>
         </div>
     </div>
   )

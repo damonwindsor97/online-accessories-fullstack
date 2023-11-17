@@ -1,16 +1,18 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Form, InputGroup, Row, Col, Spinner} from 'react-bootstrap'
-import * as styles from './AddProduct.css'
+import { useState, useEffect, useRef } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { Form, InputGroup, Row, Col, Spinner, Container} from 'react-bootstrap'
 
-
+import { getFileFromUrl } from '../../services/writeUtils'
+import OaLoader from '../../components/common/OaLoader'
 import productService from '../../services/productServices'
 import OaCard from '../../components/common/OaCard'
 import OaButton from '../../components/common/OaButton'
 
-function AddProduct() {
+function EditProduct() {
+    const params = useParams();
   const navigate = useNavigate();
   const [productData, setProductData] = useState({
+    id: params.id,
     name: "",
     description: "",
     category: "",
@@ -21,10 +23,54 @@ function AddProduct() {
     image: ""
   })
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false)
+  const [uploadedFile, setUploadedFile] = useState("")
+  const [preview, setPreview] = useState(true);
 
-  const { name, description, category, price, manufacturer, onSale, isAvailable } = productData
+//   Destructure data for use
+  const { id, name, description, category, price, manufacturer, onSale, isAvailable, image } = productData
 
+//   Fetch product function
+const effectRan = useRef(false);
+  useEffect(() => {
+    if(effectRan.current == false){
+      fetchProduct();
+      setLoading(false)
+
+      return () => {
+        effectRan.current = true
+      }
+    }
+  }, [id])
+
+async function fetchProduct(){
+    try {
+        const response = await productService.getById(id);
+        const fetchedProduct = await response.data;
+        console.log(fetchedProduct)
+  
+        setProductData(productOnMount => ({
+          ...productOnMount,
+          ...fetchedProduct
+        }));
+
+        // new save uploaded file string to state
+        if(!fetchedProduct.image){
+            console.log('No downloadURL provided')
+        } else {
+            const fileGlob = getFileFromUrl(fetchedProduct.image);
+            setUploadedFile(fileGlob)
+        }
+  
+  
+      } catch (error) {
+        console.log(error?.response);
+        setError(true)
+      }
+}
+
+// handle state changes upon text
   const handleTextChange = (e) => {
     const { name, value } = e.target;
     setProductData({ ...productData, [name]: value });
@@ -34,6 +80,7 @@ function AddProduct() {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setProductData({ ...productData, image: file });
+    setPreview(false);
   }  
 
   // [3] handleSubmit will control form submission event
@@ -41,24 +88,45 @@ function AddProduct() {
     e.preventDefault();      
     setLoading(true);
     try {
-      console.log('test', import.meta.env.VITE_API_URL)
+
       // API Post (refactored)
-      const response = await productService.post(productData);
-      console.log(response);
+      const response = await productService.put(id, productData, uploadedFile);
+
       navigate('/store/products');
 
     } catch (err) {
-      console.log(err);
+      console.log(err?.response);
       window.scroll({top: 0, left: 0, behavior: 'smooth' });
       setTimeout(() => {setLoading(false)}, 1000);
     }
   };
 
+      // CONDITIONAL LOAD: ERROR
+      if (error) {
+        return (
+          <Container className='text-center mt-5'>
+            <p>Error loading page...</p>
+    
+          </Container>
+        )
+      }
+    
+      // CONDITIONAL LOAD: LLOADING
+      if (loading && effectRan.current === false) {
+        return (
+          <Container className='text-center mt-4'>
+            <OaLoader />
+          </Container>
+        )
+      }
+
+      
   return (
-    <OaCard title="Add Product">
+    <OaCard title="Edit Product">
+        <h3>Make sure you are editing the CORRECT Product</h3>
+        <h5>ALL Fields are Required</h5>
 
-
-      <Form onSubmit={handleSubmit} className={styles.formCard}>
+      <Form onSubmit={handleSubmit}>
         {/* PRODUCT NAME */}
         <Form.Group className='mb-3'>
           <Form.Label>Product Name</Form.Label>
@@ -109,10 +177,10 @@ function AddProduct() {
                 <Form.Control 
                 type="number" 
                 aria-describedby="price-dollar" 
-                id="price-input" 
+                id="price" 
                 name="price"  
                 value={price} 
-                placeholder="0" 
+      
                 onChange={handleTextChange}
                 />
               </InputGroup>
@@ -174,6 +242,15 @@ function AddProduct() {
           </Row>
         </Form.Group>
 
+        {/* IMAGE PREVIEW */}
+        { preview && !loading ? <div>
+            <h6>Current Image</h6>
+            <img
+            style={{ width: "20%", margin: "1rem auto"}} 
+            src={image} 
+            alt={`image-${name}`}/>
+        </div> : null }
+
         {/* GROUP 6: PRODUCT IMAGE */}
         <Form.Group className="mb-3" controlId="image">
           <Form.Label>Product image</Form.Label>
@@ -201,4 +278,4 @@ function AddProduct() {
   )
 }
 
-export default AddProduct
+export default EditProduct

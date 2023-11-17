@@ -3,7 +3,7 @@ import twColors from 'tailwindcss/colors';
 
 export const root = createGlobalTheme(":root", {
   fonts: {
-    brand: "Montserrat, apple-system, sans-serif",
+    brand: "Roboto, apple-system, sans-serif",
     body: "Karla, apple-system, sans-serif",
   },
 
@@ -13,12 +13,13 @@ export const root = createGlobalTheme(":root", {
   },
   colors: {
     // Semantic tokens
-    primary: twColors.white,
-    complementary: twColors.black,
+    primary: twColors.slate[900],
+    complementary: twColors.white,
     brand: twColors.purple[400],
     brandLight: twColors.purple[200],
     brandDark: twColors.purple[600],
     transparent: "transparent",
+
 
     // Color tokens
     success: twColors.green[400],

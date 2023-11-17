@@ -3,9 +3,9 @@ import { vars } from '../../styles/themes.css';
 
 export const TopFooter = style({
     color: vars.colors.complementary,
-    backgroundColor: vars.colors.grey200,
+    background: vars.colors.grey600,
     padding: vars.space["3x"],
-    borderTop: `1px solid ${vars.colors.grey300}`,
+    borderTop: `1px solid ${vars.colors.grey600}`,
     textAlign: "center"
 })
 
@@ -22,4 +22,16 @@ export const TopFooterNav = style({
 
 export const NavStyling = style({
     listStyleType: "none",
+})
+
+export const navLink = style({
+    color: vars.colors.complementary,
+    fontSize: vars.fontSizes["3x"],
+    textTransform: "uppercase",
+    transition: "0.2s ease-in",
+    textDecoration: "none",
+  
+    ":hover": {
+      color: vars.colors.brand
+    }
 })

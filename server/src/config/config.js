@@ -8,8 +8,9 @@ module.exports = {
     },
     // AUTH ENV
     authentication: {
-
-    },
+        //Application secret for creating a secure web token
+        jwtSecret: process.env.SECRET,
+      },
 
     // CORS WHITELISTS
     corsAllowedOptions: [

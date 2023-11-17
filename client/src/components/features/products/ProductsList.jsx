@@ -12,7 +12,7 @@ function ProductsList({products}) {
           <ProductItem 
             key={product.id}
             id={product.id}
-            productName={product.productName}
+            name={product.name}
             description={product.description}
             price={priceFormatter(product.price)}
             category={product.category}

@@ -3,7 +3,7 @@ import { vars } from '../../styles/themes.css';
 
 export const navbar = style({
   fontFamily: vars.fonts.brand,
-  backgroundColor: vars.colors.brandLight,
+  backgroundColor: vars.colors.primary,
   padding: `${vars.space['3x']} 0`,
   transition: "background 0.2s ease-in, color 0.2s ease-in",
   boxShadow: "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px"
