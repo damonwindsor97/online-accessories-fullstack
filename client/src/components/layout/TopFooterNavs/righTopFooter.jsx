@@ -11,6 +11,16 @@ function righTopFooter() {
                     Provide API
                 </li>
             </Link>
+            <Link  className={styles.navLink}>
+                <li>
+                    MSI
+                </li>
+            </Link>
+            <Link  className={styles.navLink}>
+                <li>
+                    Intel
+                </li>
+            </Link>
         </ul>
     </div>
   )

@@ -9,8 +9,8 @@ function ProductItem(props) {
       <div className={styles.productCard}>
         <div className={styles.imageBox}>
           {props.onSale == "true" && <p className={styles.onSale}>ON SALE</p>}
-          <Image src={props.image} alt={props.image} thumbnail className={styles.productImage}/>
-          <p className={styles.productCardCategory}>{props.category}</p>
+          <Image src={props.image} alt={props.image} className={styles.productImage}/>
+          <p className={styles.productCardCategory}>Category: {props.category}</p>
         </div>
         <div className={styles.productCardContent}>
           <h2 className={styles.productCardTitle}>{props.name}</h2>

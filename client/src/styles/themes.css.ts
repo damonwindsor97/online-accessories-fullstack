@@ -19,6 +19,7 @@ export const root = createGlobalTheme(":root", {
     brandLight: twColors.purple[200],
     brandDark: twColors.purple[600],
     transparent: "transparent",
+    compTwo: twColors.slate[700],
 
 
     // Color tokens

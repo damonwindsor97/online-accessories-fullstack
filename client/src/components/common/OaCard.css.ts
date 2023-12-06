@@ -5,6 +5,10 @@ import { vars } from "../../styles/themes.css";
 export const generalForm = style({
     minWidth: "60vw"
   })
+
+export const dashboardForm = style({
+    minWidth: "100vw"
+  })
   
   export const authForm = style({
     minWidth: "25vw"

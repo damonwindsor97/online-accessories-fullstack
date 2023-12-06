@@ -25,7 +25,6 @@ const Home = () => {
 
         <SaleProducts/>
 
-        <ProductSelect/>
 
       </Container>
     </Fragment>

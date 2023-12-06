@@ -11,7 +11,7 @@ export const productCard = style({
   justifyItems: "center",
   textAlign: "center",
   borderRadius: "5px",
-  background: `${vars.colors.complementary}`,
+  background: `${vars.colors.compTwo}`,
   padding: `${vars.space['1x']}`,
   border: "1px solid black",
   minHeight: "24em",
@@ -24,8 +24,8 @@ export const productCard = style({
 })
 
 export const productCardContent = style({
-  color: `${vars.colors.primary}`,
-  backgroundColor: vars.colors.complementary,
+  color: `${vars.colors.complementary}`,
+  backgroundColor: vars.colors.compTwo,
   margin: "0.5rem 0.5rem",
   padding: "0.5rem",
   width: "100%",
@@ -37,7 +37,9 @@ export const productCardTitle = style({
 })
 
 export const productCardCategory = style({
-  color: `${vars.colors.primary}`
+  color: `${vars.colors.complementary}`,
+  fontSize: `${vars.fontSizes['2x']}`,
+  fontWeight: `${vars.fontWeights.light}`
 })
 
 

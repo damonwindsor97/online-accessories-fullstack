@@ -21,7 +21,7 @@ const Header = () => {
       <Container>
         <Navbar.Brand className={styles.brandLink} as={Link} to='/'>
           <div className={styles.logoTextBox}>
-            <span className={styles.brand}>OA</span>
+            {/* <span className={styles.brand}>OA</span> */}
             <span className={styles.brandSub}>Online Accessories</span>
           </div>
         </Navbar.Brand>
@@ -41,7 +41,6 @@ const Header = () => {
             {user && <Nav.Link className={styles.navLink} as={Link} to='/dashboard'>{user.username} <BsFillPersonVcardFill size="2em"/></Nav.Link>}
             {user && <Nav.Link className={styles.navLink} onClick={() => logout()}><IoLogOut size="2em" /></Nav.Link>}
             {user && <Nav.Link className={styles.navLink}><BsFillCartPlusFill  size="2em"/></Nav.Link>}
-            {user && <Link to='/store/product/add'><OaButton >Create Listing</OaButton></Link>}
           </Nav>
         </Navbar.Collapse>
       </Container>
