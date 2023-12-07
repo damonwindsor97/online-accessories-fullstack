@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { ToastContainer, Slide } from 'react-toastify';
 
 import Header from "./Header"
+import OaBox from '../common/OaBox';
 import TopFooter from './TopFooter';
 import Footer from './Footer'
 
@@ -25,6 +26,13 @@ const Layout = () => {
       />
       <Header />
       <div className={styles.appContent}>
+      <OaBox 
+          link="Shop Here"
+          linkTo="/store/products"
+          title="OA"
+          content="UPGRADE YOUR GAME"
+          
+        />
         <Outlet />
       </div>
       <TopFooter/>
