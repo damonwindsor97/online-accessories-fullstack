@@ -40,8 +40,8 @@ function Dashboard() {
               <h3>ADMIN PANEL</h3>
               <div className="d-grid gap-2">
                 <Link to='/store/product/add'><OaButton>CREATE PRODUCT</OaButton></Link>
-                <OaButton>EDIT PRODUCT</OaButton>
-                <OaButton>DELETE PRODUCT</OaButton>
+                <Link><OaButton>EDIT PRODUCT</OaButton></Link>
+                <Link to='/dashboard/delete'><OaButton>DELETE PRODUCT</OaButton></Link>
               </div>
             </Col>
           </Row>

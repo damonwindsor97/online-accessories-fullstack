@@ -36,7 +36,7 @@ function ProductDetails() {
   const [ loading, setLoading] = useState(true);
   const [error, setError] = useState(false)
 
-  const { id, name, description, price, image, manufacturer} = productData
+  const { id, name, description, price, image, manufacturer, isAvailable} = productData
 
   const effectRan = useRef(false);
   useEffect(() => {
@@ -135,8 +135,9 @@ function ProductDetails() {
             <Col>
               <div className='detailsRightBox'>
                 <h3 className={styles.detailsTitle}>{name}</h3>
-                <h5 className={styles.detailsManufacturer}>{manufacturer}</h5>
+                <h5 className={styles.detailsManufacturer}>Manufacturer: {manufacturer}</h5>
                 <p className={styles.detailsDescription}>{description}</p>
+                <h5 className={styles.detailsManufacturer}>In Stock: {isAvailable}</h5>
                 <p className={styles.detailsPrice}>{priceFormatter(price)}</p>
                 <OaButton>Buy Now</OaButton>
                 <OaButton>add to cart</OaButton>

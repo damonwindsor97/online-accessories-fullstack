@@ -85,13 +85,8 @@ function ProductsMenu() {
 
   return (
     <Container className='text-center mt-4'>
-      {/* <OaBox
-        title="UPGRADE YOUR SYSTEM"
-        content="Free Shipping with all orders"
-      /> */}
       <h1 className={styles.hardwareHeading}>HARDWARE SELECTION</h1>
       <OaButton>Software</OaButton>
-
       <ProductsList products={data}/>
     </Container>
   )

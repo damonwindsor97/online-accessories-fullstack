@@ -14,7 +14,6 @@ api.interceptors.response.use(null, (error) => {
         error.response.status >= 400 &&
         error.response.status &&
         error.response.status < 500;
-    console.log(expectedError)
 
 
     if(!expectedError) {

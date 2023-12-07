@@ -40,6 +40,7 @@ function del(id){
   return api.delete('products/' + id)
 }
 
+
 // Product Service "write" functions
 // Set content header to multipart form
 const formConfig = {
@@ -73,7 +74,8 @@ const productService = {
     post,
     getById,
     put,
-    del
+    del,
+
 }
 
 export default productService;

@@ -15,6 +15,7 @@ import ProductDetails from './pages/product/ProductDetails';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Dashboard from './pages/auth/Dashboard';
+import DeletePanel from './pages/auth/admin/DeletePanel';
 
 // Import components
 import Layout from './components/layout/Layout';
@@ -33,6 +34,7 @@ function App(params) {
         {/* Private Auth Routes */}
         <Route element={<AuthPrivateRoutes/>}>
           <Route path='dashboard' element={<Dashboard/>} />
+          <Route path='dashboard/delete' element={<DeletePanel/>} />
         </Route>
 
         {/* PRODUCTS ROUTES */}
