@@ -8,7 +8,7 @@ export const boxSetting = style({
   textAlign: "center",
   margin: vars.space['1x'],
   padding: vars.space['4x'],
-  height: "25em"
+  height: "25em",
   
 })
 

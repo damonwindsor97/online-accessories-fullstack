@@ -11,79 +11,65 @@ import OaLoader from './OaLoader';
 
 
 function OaPanelBox(props) {
-    const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const { user } = useAuth();
+  const params = useParams();
+  const navigate = useNavigate();
 
-    const { user } = useAuth();
-    const params = useParams();
-    const navigate = useNavigate();
+  const [products, setProducts] = useState([]); // Array to store all products
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-    const [productData, setProductData] = useState({
-        id: params.id,
-        name: "",
-        description: "",
-        category: "",
-        price: 0,
-        manufacturer: "",
-        onSale: false,
-        isAvailable: true,
-        image: ""
-    });
-    
-      const [ loading, setLoading] = useState(true);
-      const [error, setError] = useState(false)
-    
-      const { id, name} = productData;
+  const effectRan = useRef(false);
 
-    const effectRan = useRef(false);
-    useEffect(() => {
-      if(effectRan.current == false){
-        fetchProduct();
-        setLoading(false)
-  
-        return () => {
-          effectRan.current = true
-        }
-      }
-    }, [id])
+  useEffect(() => {
+    if (!effectRan.current) {
+      fetchProducts();
+      setLoading(false);
 
-    async function fetchProduct(){
-        try {
-          const response = await productService.getAll(id);
-          console.log(response)
-          const fetchedProduct = await response.data;
-          console.log(fetchedProduct)
-    
-          setProductData(productOnMount => ({
-            ...productOnMount,
-            ...fetchedProduct
-          }))
-    
-    
-        } catch (error) {
-          console.log(error?.response);
-          setError(true)
-        }
-      }
-     //  DELETE FUNCTION
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+      return () => {
+        effectRan.current = true;
+      };
+    }
+  }, []);
+
+
+  // Fetch all products
+  async function fetchProducts() {
     try {
-      
-      const response = await productService.del(id)
-      console.log(response)
-      setLoading(false)
-      navigate('/dashboard/delete')
+      const response = await productService.getAll();
+      const fetchedProducts = response.data;
+
+      setProducts(fetchedProducts);
     } catch (error) {
-      console.log(error);
+      console.log(error?.response);
       setError(true);
-      window.scroll({ top: 0, left: 0, behavior: 'smooth'})
     }
   }
 
+  // DELETE FUNCTION
+  const handleDelete = async (productId) => {
+    setLoading(true);
+
+    try {
+      const response = await productService.del(productId);
+      console.log(response);
+
+      if (response.status === 200) {
+        setLoading(false);
+        navigate('/dashboard/delete');
+      } else {
+        console.error('Deletion was not successful');
+      }
+    } catch (error) {
+      console.log(error);
+      setError(true);
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+    }
+  };
 //    CONDITIONAL LOAD: ERROR
    if (error) {
     return (
@@ -103,51 +89,46 @@ function OaPanelBox(props) {
     )
   }
 
-
   return (
-    <div className={styles.panelBox}>
-        <div className={styles.boxContent}>
-            <div className={styles.title}>
-                <p >Product: {props.name}</p>
-            </div>
-
-            <div className={styles.button}>
-                <OaButtonSecondary onClick={handleShow}>REMOVE</OaButtonSecondary>
-            </div>
-
-            <Modal show={show} onHide={handleClose} className={styles.modalBox} centered>
-                <Modal.Header className={styles.modalHeader}>
-                <Modal.Title className={styles.modalTitle}>ARE YOU SURE?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body className={styles.modalBody}>
-                    <Button variant='secondary' onClick={handleClose} className='m-2'>
-                        No, close
-                    </Button>
-                    {/*-------- DELETE ITEM --------*/}
-                    <OaButtonSecondary onClick={handleDelete} loadingState={loading}
-                    >
-                    {loading ? <Spinner
-                        as="span"
-                        animation="border"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                    /> : 'Yes, Delete'}
-                    </OaButtonSecondary> 
-                </Modal.Body>
-                <Modal.Footer className={styles.modalFooter}>  
-                        <p className={styles.modalFooterText}>This action cannot be reverted</p>
-                </Modal.Footer>
-            </Modal>
-
-
-
-
-
-        </div>
-
+    <div>
+      <div className={styles.panelBox}>
+          <div className={styles.boxContent}>
+              <div className={styles.title}>
+                  <p >Product: {props.name}</p>
+              </div>
+  
+              <div className={styles.button}>
+                  <OaButtonSecondary onClick={handleShow}>REMOVE</OaButtonSecondary>
+              </div>
+  
+              <Modal show={show} onHide={handleClose} className={styles.modalBox} centered>
+                  <Modal.Header className={styles.modalHeader}>
+                  <Modal.Title className={styles.modalTitle}>ARE YOU SURE?</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body className={styles.modalBody}>
+                      <Button variant='secondary' onClick={handleClose} className='m-2'>
+                          No, close
+                      </Button>
+                      {/*-------- DELETE ITEM --------*/}
+                      <OaButtonSecondary onClick={handleDelete} loadingState={loading}
+                      >
+                      {loading ? <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                      /> : 'Yes, Delete'}
+                      </OaButtonSecondary> 
+                  </Modal.Body>
+                  <Modal.Footer className={styles.modalFooter}>  
+                          <p className={styles.modalFooterText}>This action cannot be reverted</p>
+                  </Modal.Footer>
+              </Modal>
+          </div>
+      </div>
     </div>
-  )
+    )
 }
 
 export default OaPanelBox

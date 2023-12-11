@@ -2,7 +2,7 @@ import * as styles from './ProductsList.css'
 import ProductItem from "./ProductItem"
 import { priceFormatter } from '../../../services/readUtils'
 
-function ProductsList({products}) {
+function ProductsList({products, onAddToCart}) {
 
   return (
     <div className={styles.gridContainer}>
@@ -20,6 +20,7 @@ function ProductsList({products}) {
             image={product.image}
             onSale={product.onSale}
             isAvailable={product.isAvailable}
+            onAddToCart={onAddToCart}
           />
         )}
       </div>

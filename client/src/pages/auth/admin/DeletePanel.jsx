@@ -71,7 +71,7 @@ function DeletePanel() {
             <div>
                 <Link to='/dashboard'><Button className='float-start ' variant='link'><IoMdArrowRoundBack /></Button></Link>
             </div>
-        <h4>Select a Product Below:</h4>
+        <h4 className='mb-5'>Select a Product Below:</h4>
         <DeletePanelList products={data}/>
         </OaCard>
     </div>

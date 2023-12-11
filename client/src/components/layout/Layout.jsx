@@ -26,13 +26,7 @@ const Layout = () => {
       />
       <Header />
       <div className={styles.appContent}>
-      <OaBox 
-          link="Shop Here"
-          linkTo="/store/products"
-          title="OA"
-          content="UPGRADE YOUR GAME"
-          
-        />
+
         <Outlet />
       </div>
       <TopFooter/>

@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Form, InputGroup, Row, Col, Spinner} from 'react-bootstrap'
+import { useNavigate, Link } from 'react-router-dom'
+import { Form, InputGroup, Row, Col, Spinner, Button} from 'react-bootstrap'
 import * as styles from './AddProduct.css'
 
 
 import productService from '../../services/productServices'
 import OaCard from '../../components/common/OaCard'
 import OaButton from '../../components/common/OaButton'
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 function AddProduct() {
   const navigate = useNavigate();
@@ -56,8 +57,10 @@ function AddProduct() {
 
   return (
     <OaCard title="Add Product">
-
-
+      <div>
+          <Link to='/dashboard'><Button className='float-start' variant='link'><IoMdArrowRoundBack /></Button></Link>
+      </div>
+      <div>
       <Form onSubmit={handleSubmit} className={styles.formCard}>
         {/* PRODUCT NAME */}
         <Form.Group className='mb-3'>
@@ -197,6 +200,8 @@ function AddProduct() {
           /> : 'Submit'}
       </OaButton>
       </Form>
+      </div>
+      
     </OaCard>
   )
 }

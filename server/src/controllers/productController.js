@@ -9,7 +9,7 @@ module.exports = {
     async getAllProducts(req, res, next){
         try {
             const productRef = db.collection('products')
-            const snapshot = await productRef.orderBy("name", "asc").limit(10).get();
+            const snapshot = await productRef.orderBy("name", "asc").get();
 
             // 400 ERROR HANDLING - check if the document exists
             if (snapshot.empty){
