@@ -55,46 +55,51 @@ function Login() {
     }
   }
   return (
-    <OaCard title="Log In" authForm>
-    <Form onSubmit={handleSubmit}>
+    <div className={styles.glowContainer}>
+      <div className={styles.background}>
+        <OaCard title="Log In" authForm>
+        <Form onSubmit={handleSubmit}>
 
-    {/* INPUT 1: EMAIL */}
-    <Form.Group className="mb-3" controlId="email">
-      <Form.Control type="email" placeholder="Enter email" name="email" value={email} onChange={handleTextChange}/>
-    </Form.Group>
+        {/* INPUT 1: EMAIL */}
+        <Form.Group className="mb-3" controlId="email">
+          <Form.Control type="email" placeholder="Enter email" name="email" value={email} onChange={handleTextChange}/>
+        </Form.Group>
 
-    {/* PASSWORD */}
-    <Form.Group className="mb-3" controlId="password">
-      <Form.Control type="password" placeholder="Password" name="password" value={password} onChange={handleTextChange}/>
-      <Form.Text className="text-muted">
-        Forgotten your password? Unlucky
-      </Form.Text>
-    </Form.Group>
+        {/* PASSWORD */}
+        <Form.Group className="mb-3" controlId="password">
+          <Form.Control type="password" placeholder="Password" name="password" value={password} onChange={handleTextChange}/>
+          <Form.Text className="text-muted">
+            Forgotten your password? Unlucky
+          </Form.Text>
+        </Form.Group>
 
-    <div className="d-grid gap-2">
-      {/* BUTTON SUBMIT */}
-      <OaButton 
-        type="submit">
-        {loading ? <Spinner
-          as="span"
-          animation='border'
-          size='sm'
-          role='status'
-          aria-hidden="true"
-        /> : "Submit"}
-      </OaButton>
+        <div className="d-grid gap-2">
+          {/* BUTTON SUBMIT */}
+          <OaButton 
+            type="submit">
+            {loading ? <Spinner
+              as="span"
+              animation='border'
+              size='sm'
+              role='status'
+              aria-hidden="true"
+            /> : "Submit"}
+          </OaButton>
+        </div>
+
+      </Form>        
+
+      {/* Bottom part of card */}
+      <div className={styles.userNav}>
+        <span>
+          Not a member yet?&nbsp;
+          <Link to="/register">Register free here</Link>
+        </span>
+      </div>
+    </OaCard>
+      </div>
+
     </div>
-
-  </Form>        
-
-  {/* Bottom part of card */}
-  <div className={styles.userNav}>
-    <span>
-      Not a member yet?&nbsp;
-      <Link to="/register">Register free here</Link>
-    </span>
-  </div>
-</OaCard>
   )
 }
 

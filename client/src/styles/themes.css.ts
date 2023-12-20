@@ -10,6 +10,7 @@ export const root = createGlobalTheme(":root", {
   gradients: {
     mainGradient: "linear-gradient( #e9d5ff, #d8b4fe)",
     secondaryGradient: "linear-gradient(180deg, rgba(253,244,255,1) 35%, rgba(243,232,255,1) 100%)",
+    primaryGlow: "radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0))",
   },
   colors: {
     // Semantic tokens

@@ -73,7 +73,7 @@ function ProductsMenu() {
       <OaBox linkTo="/store/products" title="BEST HARDWARE, BEST PRICE" content="only at OA" />
       <Container className="text-center mt-4">
 
-      <div className={styles.cartSection}>
+      {/* <div className={styles.cartSection}>
 
         <h2 className={styles.hardwareHeading}>Cart</h2>
         {products.map((product) => (
@@ -83,7 +83,7 @@ function ProductsMenu() {
             <OaButton onClick={() => handleRemoveProduct(product.id)}>Remove</OaButton>
           </div>
         ))}
-      </div>
+      </div> */}
 
         <h1 className={styles.hardwareHeading}>HARDWARE SELECTION</h1>
         <OaButton>Software</OaButton>

@@ -6,8 +6,13 @@ export const productLink = style({
   color: vars.colors.complementary
 })
 
+export const imageBox = style({
+
+})
+
 export const productCard = style({
   display: "grid",
+
   justifyItems: "center",
   textAlign: "center",
   borderRadius: "5px",
@@ -18,10 +23,15 @@ export const productCard = style({
   transition: `all .2s ease-in-out`,
 
   ':hover': {
-      transform: `scale(1.1)`,
-      boxShadow: `0 5px 15px ${vars.colors.brand}`
+    borderColor: `${vars.colors.brand}`,
   },
-})
+
+  // Apply the transform effect to the image on hover
+  '&:hover .imageBox': {
+    transform: `scale(1.1)`,
+  }
+
+});
 
 export const productCardContent = style({
   color: `${vars.colors.complementary}`,
@@ -52,5 +62,14 @@ export const onSale = style({
 
 export const productImage = style({
   minHeight: "10em",
-  maxHeight: "10em"
+  maxHeight: "10em",
+  margin: "auto"
+})
+
+export const quantityDiv = style({
+
+})
+
+export const addToCart = style({
+
 })

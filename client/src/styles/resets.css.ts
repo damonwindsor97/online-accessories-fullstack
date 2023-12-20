@@ -12,6 +12,7 @@ globalStyle("body, h1, h2, h3, h4, p, figure, blockquote, dl, dd", {
   margin: 0
 })
 
+
 // Set core root defaults
 globalStyle("html:focus-within", {
   scrollBehavior: "smooth"

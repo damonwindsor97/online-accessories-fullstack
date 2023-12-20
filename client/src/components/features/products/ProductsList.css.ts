@@ -9,7 +9,7 @@ export const gridContainer = style({
 export const productGrid = style({
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(10rem, 1fr))",
-  gap: vars.space['4x'],
+  gap: vars.space['3x'],
   width: "80%",
   margin: `auto`,
 

@@ -2,8 +2,13 @@ import * as styles from './OaPanelBox.css'
 
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
+
+
 import { useAuth } from '../../contexts/AuthContext';
 import productService from '../../services/productServices'
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Spinner, Modal, Button } from 'react-bootstrap';
 import OaButtonSecondary from '../common/OaButtonSecondary'
@@ -60,13 +65,17 @@ function OaPanelBox(props) {
 
       if (response.status === 200) {
         setLoading(false);
-        navigate('/dashboard/delete');
+        handleClose();
+
+        toast.success("Product deleted Successfully!")
+        navigate('/dashboard');
       } else {
         console.error('Deletion was not successful');
       }
     } catch (error) {
       console.log(error);
       setError(true);
+      toast.error("Error deleting Product, see support")
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     }
   };
@@ -110,16 +119,19 @@ function OaPanelBox(props) {
                           No, close
                       </Button>
                       {/*-------- DELETE ITEM --------*/}
-                      <OaButtonSecondary onClick={handleDelete} loadingState={loading}
-                      >
-                      {loading ? <Spinner
-                          as="span"
-                          animation="border"
-                          size="sm"
-                          role="status"
-                          aria-hidden="true"
-                      /> : 'Yes, Delete'}
-                      </OaButtonSecondary> 
+                      <OaButtonSecondary onClick={() => handleDelete(props.id)} loadingState={loading}>
+                        {loading ? (
+                          <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          'Yes, Delete'
+                        )}
+                      </OaButtonSecondary>
                   </Modal.Body>
                   <Modal.Footer className={styles.modalFooter}>  
                           <p className={styles.modalFooterText}>This action cannot be reverted</p>

@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 
 import * as styles from './Register.css';
 import OaCard from '../../components/common/OaCard';
+import OaButton from '../../components/common/OaButton';
 import { useAuth } from '../../contexts/AuthContext';
 
 function Register() {
@@ -87,9 +88,9 @@ function Register() {
 
         <div className="d-grid gap-2">
           {/* BUTTON SUBMIT */}
-          <Button onClick={handleSubmit} variant="primary" type="submit">
+          <OaButton onClick={handleSubmit} variant="primary" type="submit">
             {loading ? "..." : "Submit"}
-          </Button>
+          </OaButton>
         </div>
 
       </Form>        
