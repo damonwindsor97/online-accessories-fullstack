@@ -8,7 +8,6 @@ export const panelBox = style({
     margin: "1em",
     border: "black solid 1px",
 
-
 })
 
 export const boxContent = style({

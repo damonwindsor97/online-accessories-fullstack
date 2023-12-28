@@ -73,18 +73,6 @@ function ProductsMenu() {
       <OaBox linkTo="/store/products" title="BEST HARDWARE, BEST PRICE" content="only at OA" />
       <Container className="text-center mt-4">
 
-      {/* <div className={styles.cartSection}>
-
-        <h2 className={styles.hardwareHeading}>Cart</h2>
-        {products.map((product) => (
-          <div key={product.id} className={styles.cartItem}>
-            <p>{product.name}</p>
-            <p>Quantity: {product.quantity}</p>
-            <OaButton onClick={() => handleRemoveProduct(product.id)}>Remove</OaButton>
-          </div>
-        ))}
-      </div> */}
-
         <h1 className={styles.hardwareHeading}>HARDWARE SELECTION</h1>
         <OaButton>Software</OaButton>
 

@@ -1,8 +1,8 @@
+import * as styles from './Cart.css'
+
 import { useCart } from '../../../contexts/CartContext';
 
 import {Button, Modal} from 'react-bootstrap';
-
-
 
 function Cart(props) {
 
@@ -10,17 +10,18 @@ function Cart(props) {
 
   return (
     <Modal
+      className={styles.modalMain}
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton className={styles.modalHeader}>
         <Modal.Title id="contained-modal-title-vcenter">
           Your Cart
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className={styles.modalBody}>
         {cart.length === 0 ? (
           <p>Your cart is empty.</p>
         ) : (
@@ -33,7 +34,7 @@ function Cart(props) {
           </ul>
         )}
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer className={styles.modalFooter}>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>

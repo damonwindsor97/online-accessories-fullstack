@@ -7,7 +7,7 @@ import { Container, Col, Row } from 'react-bootstrap'
 import { priceFormatter } from '../../services/readUtils'
 import useAuth from '../../hooks/useAuth'
 import productService from '../../services/productServices'
-
+import { useCart } from '../../contexts/CartContext'
 
 import OaLoader from '../../components/common/OaLoader'
 import OaButton from '../../components/common/OaButton'
@@ -20,7 +20,28 @@ function ProductDetails() {
   const { user } = useAuth();
   const params = useParams();
   const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart()
 
+
+     // Event handler for adding the product to the cart
+     const handleAddToCart = () => {
+      const newProduct = {
+        id: props.id,
+        name: props.name,
+        description: props.description,
+        category: props.category,
+        manufacturer: props.manufacturer,
+        image: props.image,
+        onSale: props.onSale,
+        price: props.price,
+        quantity: quantity,
+      };
+      props.onAddToCart(newProduct);
+      addToCart(newProduct)
+      console.log('Product added to cart!');
+    };
+  
   const [productData, setProductData] = useState({
     id: params.id,
     name: "",
@@ -140,7 +161,16 @@ function ProductDetails() {
                 <h5 className={styles.detailsManufacturer}>In Stock: {isAvailable}</h5>
                 <p className={styles.detailsPrice}>{priceFormatter(price)}</p>
                 <OaButton>Buy Now</OaButton>
-                <OaButton>add to cart</OaButton>
+                <div className={styles.quantityDiv}> 
+            <input
+              type="number"
+              className='w-25'
+              min="1"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+            <OaButton className={styles.addToCart} onClick={handleAddToCart}>Add to Cart</OaButton>
+          </div>
               </div>
             </Col>
           </Row>
