@@ -17,7 +17,8 @@ Styling System: Vanilla Extract
   <li>Admin Delete Product Panel</li>
   <li>User Dashboard</li>
   <li>Dynamic Sales Items</li>
-  <li>Dynamic Search Bar</li>
+  <li>Product Search Bar</li>
+  <li>Product Filter (soon)</li>
   <li>Encrypted Passwords</li>
   <li>Cart System</li>
   <li>Server-Side Authentication</li>
