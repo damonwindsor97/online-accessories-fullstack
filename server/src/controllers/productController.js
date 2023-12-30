@@ -42,7 +42,7 @@ module.exports = {
     async getSaleProducts(req, res, next){
         try {
             const productRef = db.collection('products')
-            const snapshot = await productRef.where('onSale', "==", "true").orderBy("name", "asc").get();
+            const snapshot = await productRef.where('onSale', "==", "true").orderBy("name", "asc").limit(5).get();
 
             // 400 ERROR HANDLING - check if the document exists
             if (snapshot.empty){
@@ -68,6 +68,67 @@ module.exports = {
             
         } catch (error) {
             return next(ApiError.internal('The Sale products could not be found, we lost our map', error))
+        }
+    },
+
+    async getMotherboards(req, res, next){
+        try {
+            const productRef = db.collection('products')
+            const snapshot = await productRef.where('category', "==", "motherboard").orderBy("name", "asc").limit(4).get()
+
+            // Check if they exist
+            if(snapshot.empty){
+                return next(ApiError.badRequest('No motherboards in stock'))
+            }
+
+            // if they're in stock
+            let docs = [];
+            snapshot.forEach(doc => {
+                docs.push({
+                    id: doc.id,
+                    name: doc.data().name,
+                    description: doc.data().description,
+                    category: doc.data().category,
+                    manufacturer: doc.data().manufacturer,
+                    price: doc.data().price,
+                    onSale: doc.data().onSale,
+                    isAvailable: doc.data().isAvailable,
+                    image: doc.data().image
+                });
+            })
+            res.send(docs)
+        } catch (error) {
+            return next(ApiError.internal('The motherboards could not be found, we lost our map', error))
+        }
+    },
+
+    async getPeripherals(req, res, next){
+        try {
+            const productRef = db.collection('products')
+            const snapshot = await productRef.where('category', "==", "peripherals").orderBy('name', 'asc').limit(4).get()
+
+            if(snapshot.empty){
+                return next(ApiError.badRequest("No peripherals in stock"))
+            }
+
+            // if they're in stock
+            let docs = [];
+            snapshot.forEach(doc => {
+                docs.push({
+                    id: doc.id,
+                    name: doc.data().name,
+                    description: doc.data().description,
+                    category: doc.data().category,
+                    manufacturer: doc.data().manufacturer,
+                    price: doc.data().price,
+                    onSale: doc.data().onSale,
+                    isAvailable: doc.data().isAvailable,
+                    image: doc.data().image
+                });
+            })
+            res.send(docs)
+        } catch (error) {
+            return next(ApiError.internal('The peripherals could not be found', error))
         }
     },
 

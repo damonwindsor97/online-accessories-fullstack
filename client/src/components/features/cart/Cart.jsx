@@ -16,7 +16,7 @@ function Cart(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton className={styles.modalHeader}>
+      <Modal.Header className={styles.modalHeader}>
         <Modal.Title id="contained-modal-title-vcenter">
           Your Cart
         </Modal.Title>
@@ -35,7 +35,8 @@ function Cart(props) {
         )}
       </Modal.Body>
       <Modal.Footer className={styles.modalFooter}>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={props.onHide}>Checkout</Button>
+        <Button variant='secondary' onClick={props.onHide}>Continue Shopping</Button>
       </Modal.Footer>
     </Modal>
   )

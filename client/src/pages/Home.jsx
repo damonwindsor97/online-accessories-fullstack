@@ -3,9 +3,12 @@ import { Fragment } from 'react';
 // Component Imports
 import Container from 'react-bootstrap/Container';
 
+import OaBox from '../components/common/OaBox';
 import PromotionWindow from '../components/features/PromotionWindow';
 import SaleProducts from '../components/features/products/SaleProducts';
-import OaBox from '../components/common/OaBox';
+
+import FeaturedMobos from '../components/features/products/FeaturedMobos';
+import FeaturedPeripherals from '../components/features/products/FeaturedPeripherals';
 
 
 const Home = () => {
@@ -24,6 +27,8 @@ const Home = () => {
           />
 
           <SaleProducts/>
+          <FeaturedMobos/>
+          <FeaturedPeripherals/>
 
 
       </Container>

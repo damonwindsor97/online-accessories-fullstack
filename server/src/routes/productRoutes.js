@@ -15,6 +15,12 @@ module.exports = () => {
     // GET onSale PRODUCTS
     router.get('/onsale', ProductController.getSaleProducts)
 
+    // GET Motherboards
+    router.get('/motherboards', ProductController.getMotherboards)
+
+    // GET Peripherals / accessories
+    router.get('/peripherals', ProductController.getPeripherals)
+
     // ADD/POST PRODUCTS
     router.post('/', 
     [
