@@ -22,25 +22,6 @@ function ProductDetails(props) {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart()
-
-
-   // Event handler for adding the product to the cart
-   const handleAddToCart = () => {
-    const newProduct = {
-      id: props.id,
-      name: props.name,
-      description: props.description,
-      category: props.category,
-      manufacturer: props.manufacturer,
-      image: props.image,
-      onSale: props.onSale,
-      price: props.price,
-      quantity: quantity,
-    };
-
-    addToCart(newProduct)
-    console.log('Product added to cart!');
-  };
   
   const [productData, setProductData] = useState({
     id: params.id,
@@ -88,6 +69,25 @@ function ProductDetails(props) {
       setError(true)
     }
   }
+
+  
+   // Event handler for adding the product to the cart
+   const handleAddToCart = () => {
+    const newProduct = {
+      id: params.id,
+      name: productData.name,
+      description: productData.description,
+      category: productData.category,
+      manufacturer: productData.manufacturer,
+      image: productData.image,
+      onSale: productData.onSale,
+      price: productData.price,
+      quantity: quantity,
+    };
+
+    addToCart(newProduct)
+    console.log('Product added to cart!');
+  };
 
   //  DELETE FUNCTION
   const handleDelete = async (e) => {
