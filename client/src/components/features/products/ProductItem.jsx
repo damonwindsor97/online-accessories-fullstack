@@ -26,7 +26,7 @@ function ProductItem(props) {
       price: props.price,
       quantity: quantity,
     };
-    props.onAddToCart(newProduct);
+
     addToCart(newProduct)
     console.log('Product added to cart!');
   };

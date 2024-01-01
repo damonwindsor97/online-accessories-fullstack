@@ -16,10 +16,8 @@ function ProductsMenu() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true); // Change to true initially
   const [error, setError] = useState(false);
-  const [products, setProducts] = useState([]);
   const [search, setSearch] = useState('');
-  const [cart, setCart] = useState([])
-
+  const [products, setProducts] = useState([]);
 
   const effectRan = useRef(false);
 
@@ -52,11 +50,7 @@ function ProductsMenu() {
     console.log('Product added to cart!', product);
   }
 
-  function handleRemoveProduct(id) {
-    console.log(id);
-    const updatedProducts = products.filter((product) => product.id !== id);
-    setProducts(updatedProducts);
-  }
+
 
   function onChange(e) {
     const value = e.target.value;

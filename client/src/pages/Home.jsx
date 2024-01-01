@@ -11,7 +11,7 @@ import FeaturedMobos from '../components/features/products/FeaturedMobos';
 import FeaturedPeripherals from '../components/features/products/FeaturedPeripherals';
 
 
-const Home = () => {
+const Home = (onAddToCart) => {
   return (
     <Fragment>
         <OaBox 

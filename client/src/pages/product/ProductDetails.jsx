@@ -16,7 +16,7 @@ import OaLink from '../../components/common/OaLink'
 import Spinner from 'react-bootstrap/Spinner'
 
 
-function ProductDetails() {
+function ProductDetails(props) {
   const { user } = useAuth();
   const params = useParams();
   const navigate = useNavigate();
@@ -24,23 +24,23 @@ function ProductDetails() {
   const { addToCart } = useCart()
 
 
-     // Event handler for adding the product to the cart
-     const handleAddToCart = () => {
-      const newProduct = {
-        id: props.id,
-        name: props.name,
-        description: props.description,
-        category: props.category,
-        manufacturer: props.manufacturer,
-        image: props.image,
-        onSale: props.onSale,
-        price: props.price,
-        quantity: quantity,
-      };
-      props.onAddToCart(newProduct);
-      addToCart(newProduct)
-      console.log('Product added to cart!');
+   // Event handler for adding the product to the cart
+   const handleAddToCart = () => {
+    const newProduct = {
+      id: props.id,
+      name: props.name,
+      description: props.description,
+      category: props.category,
+      manufacturer: props.manufacturer,
+      image: props.image,
+      onSale: props.onSale,
+      price: props.price,
+      quantity: quantity,
     };
+
+    addToCart(newProduct)
+    console.log('Product added to cart!');
+  };
   
   const [productData, setProductData] = useState({
     id: params.id,

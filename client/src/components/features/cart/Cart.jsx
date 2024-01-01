@@ -1,12 +1,14 @@
 import * as styles from './Cart.css'
 
+import { useState } from 'react';
+
 import { useCart } from '../../../contexts/CartContext';
 
 import {Button, Modal} from 'react-bootstrap';
 
 function Cart(props) {
 
-  const { cart } = useCart()
+  const { cart, removeFromCart } = useCart()
 
   return (
     <Modal
@@ -28,7 +30,12 @@ function Cart(props) {
           <ul>
             {cart.map((product) => (
               <li key={product.id}>
-                {product.name} - Quantity: {product.quantity}
+                <div>
+                  {product.name} - Quantity: {product.quantity}
+                </div>
+                <div>
+                  <Button variant='danger' onClick={removeFromCart}>X</Button>
+                </div>
               </li>
             ))}
           </ul>
