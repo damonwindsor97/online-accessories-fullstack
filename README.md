@@ -18,7 +18,7 @@ Styling System: Vanilla Extract
   <li>User Dashboard</li>
   <li>Dynamic Sales Items</li>
   <li>Product Search Bar</li>
-  <li>Product Filter (soon)</li>
+  <li>Product Filter by Category</li>
   <li>Encrypted Passwords</li>
   <li>Cart System</li>
   <li>Server-Side Authentication</li>

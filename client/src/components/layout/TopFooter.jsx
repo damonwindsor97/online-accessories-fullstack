@@ -5,6 +5,7 @@ import * as styles from './TopFooter.css'
 // Nav Imports
 import LeftTopFooter from './TopFooterNavs/leftTopFooter'
 import RighTopFooter from './TopFooterNavs/righTopFooter'
+import MidTopFooter from './TopFooterNavs/midTopFooter'
 
 function TopFooter() {
   return (
@@ -14,7 +15,7 @@ function TopFooter() {
                 <LeftTopFooter/>
             </div>
             <div className={styles.TopFooterNav}>
-                _
+                <MidTopFooter/>
             </div>
             <div className={styles.TopFooterNav}>
                 <RighTopFooter/>

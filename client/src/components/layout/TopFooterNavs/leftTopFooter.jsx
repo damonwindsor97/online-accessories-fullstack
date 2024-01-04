@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function leftTopFooter() {
   return (
     <div>
-        <h4>Quick Links</h4>
+        <h4>Shop Links</h4>
         <ul className={styles.NavStyling}>
             <Link className={styles.navLink}>
                 <li>
@@ -16,11 +16,7 @@ function leftTopFooter() {
                     Products
                 </li>
             </Link>
-            <Link  className={styles.navLink}>
-                <li>
-                    Support
-                </li>
-            </Link>
+
             <Link  className={styles.navLink}>
                 <li>
                     Sign-up

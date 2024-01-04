@@ -6,16 +6,11 @@ export const hardwareHeading = style({
     color: `${vars.colors.complementary}`
 })
 
-export const cartSection = style({
-    backgroundColor: `${vars.colors.compTwo}`,
-    borderRadius: "5px",
-    color: `${vars.colors.brandLight}`,
-    width: "40vw",
-    margin: "auto"
+export const filterButtons = style({
+    display: "flex",
+
 })
 
-export const cartItem = style({
-    backgroundColor: `${vars.colors.grey600}`,
-    margin: "1em auto",
-    width: "80%"
+export const searchBar = style({
+    width: "100%"
 })

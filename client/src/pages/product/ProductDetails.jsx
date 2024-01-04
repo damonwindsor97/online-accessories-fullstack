@@ -160,7 +160,6 @@ function ProductDetails(props) {
                 <p className={styles.detailsDescription}>{description}</p>
                 <h5 className={styles.detailsManufacturer}>In Stock: {isAvailable}</h5>
                 <p className={styles.detailsPrice}>{priceFormatter(price)}</p>
-                <OaButton>Buy Now</OaButton>
                 <div className={styles.quantityDiv}> 
             <input
               type="number"
