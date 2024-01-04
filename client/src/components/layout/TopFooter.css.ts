@@ -35,3 +35,21 @@ export const navLink = style({
       color: vars.colors.brand
     }
 })
+
+export const socialBox = style({
+    display: "inline",
+
+})
+
+export const socialLink = style({
+    transition: "0.2s ease-in",
+    listStyleType: "none",
+    float: "left",
+    margin: "1rem",
+    width: "5em",
+
+
+    ":hover": {
+        color: vars.colors.brand
+      }
+})
