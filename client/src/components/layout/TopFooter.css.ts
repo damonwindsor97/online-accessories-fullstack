@@ -37,14 +37,16 @@ export const navLink = style({
 })
 
 export const socialBox = style({
-    display: "inline",
-
+    display: "inline-block",
+    alignContent: "center",
+    alignItems: "center",
+    margin: "auto"
 })
 
 export const socialLink = style({
     transition: "0.2s ease-in",
     listStyleType: "none",
-    float: "left",
+    float: "right",
     margin: "1rem",
     width: "5em",
 

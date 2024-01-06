@@ -33,6 +33,7 @@ export const detailsTitle = style({
 
 export const detailsPrice = style({
     fontWeight: `${vars.fontWeights.bold}`,
+    fontSize: `${vars.fontSizes['5x']}`,
     border: "2px solid red",
     width: "5.5em",
     backgroundColor: `${vars.colors.primary}`

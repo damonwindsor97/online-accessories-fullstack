@@ -1,14 +1,18 @@
 import * as styles from './Cart.css'
 
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
 import { useCart } from '../../../contexts/CartContext';
 
-import {Button, Modal} from 'react-bootstrap';
+import {Button, Modal, Image, Row, Col} from 'react-bootstrap';
+
+import { FaMinusCircle } from "react-icons/fa";
+import { FaCirclePlus } from "react-icons/fa6";
+import { MdRemoveShoppingCart } from "react-icons/md";
 
 function Cart(props) {
 
-  const { cart, removeFromCart } = useCart()
+  const { cart, totalPrice, removeFromCart } = useCart()
+
 
   return (
     <Modal
@@ -28,18 +32,69 @@ function Cart(props) {
           <p>Your cart is empty.</p>
         ) : (
           <ul>
+          {/* Titles */}
+          <Row className={styles.cartTitles}>
+            <Col>
+                    
+            </Col>
+            <Col className={styles.cartTitle}>
+              Product:
+            </Col>
+
+            <Col className={styles.cartTitle}>
+              Quantity:
+            </Col>
+
+            <Col className={styles.cartTitle}>
+              Subtotal:
+            </Col>
+          </Row>
             {cart.map((product) => (
-              <li key={product.id}>
-                <div>
-                  {product.name} - Quantity: {product.quantity}
-                </div>
-                <div>
-                  <Button variant='danger' onClick={removeFromCart}>X</Button>
-                </div>
-              </li>
+              <div className={styles.cartItemBox} key={product.id}>
+                <li key={product.id} className={styles.cartItem}>
+                <MdRemoveShoppingCart onClick={() => removeFromCart(product)}/>
+                  <Row>
+                    {/* PRODUCT IMAGE */}
+                    <Col>
+                    <Image src={product.image} className={styles.productImage}></Image>
+                    </Col>
+                    {/* PRODUCT NAME */}
+                    <Col className={styles.cartProductName}>
+                    {product.name} 
+                    </Col>
+                    {/* QUANTITY */}
+                    <Col className={styles.cartProductQuantity}>
+                      <Row>
+                        <Col>
+                          <FaMinusCircle />
+                        </Col>
+                        <Col>
+                          {product.quantity}
+                        </Col>
+                        <Col>
+                          <FaCirclePlus />
+                        </Col>
+                      </Row>
+                    </Col>
+                    {/* SUBTOTAL */}
+                    <Col className={styles.cartProductPrice}>
+                    {product.price}
+                    </Col>
+                  </Row>
+                </li>
+              </div>
+
             ))}
           </ul>
         )}
+        <Row>
+          <Col></Col>
+          <Col></Col>
+          <Col></Col>
+          <Col className={styles.totalPrice}>
+            Total: ${totalPrice}
+          </Col>
+        </Row>
       </Modal.Body>
       <Modal.Footer className={styles.modalFooter}>
         <Button onClick={props.onHide}>Checkout</Button>
