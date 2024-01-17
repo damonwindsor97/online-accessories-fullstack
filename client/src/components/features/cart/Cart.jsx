@@ -98,7 +98,8 @@ function Cart(props) {
       </Modal.Body>
       <Modal.Footer className={styles.modalFooter}>
         <Button onClick={props.onHide}>Checkout</Button>
-        <Button variant='secondary' onClick={props.onHide}>Continue Shopping</Button>
+        <Button variant='secondary' onClick={props.onHide}>Continue Shopping
+</Button>
       </Modal.Footer>
     </Modal>
   )

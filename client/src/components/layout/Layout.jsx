@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import { ToastContainer, Slide } from 'react-toastify';
 
 import Header from "./Header"
-import OaBox from '../common/OaBox';
 import TopFooter from './TopFooter';
 import Footer from './Footer'
 
