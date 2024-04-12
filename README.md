@@ -1,4 +1,4 @@
-# online-accessories-fullstack - work in progress
+# online-accessories-fullstack 
 
 Full Stack E-Commerce Application (Not including back-end checkout)
 
